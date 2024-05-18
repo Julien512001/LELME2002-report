@@ -17,9 +17,11 @@ def plot(df):
 
     error_x = x[-1] - xRend
     error_y = y[-1] - yRend
-    ratio = xRend/x[-1] *100
+    ratio_x = xRend/x[-1] *100
+    ratio_y = yRend/y[-1] *100
 
-    print(error_x, error_y, ratio)
+
+    print("e_x : {}, e_y : {}, ratio : {}".format(error_x,  error_y, ratio_x, ratio_y))
     rad = np.radians(theta)
 
     plt.scatter(x,y, color='yellow', label='odométrie')

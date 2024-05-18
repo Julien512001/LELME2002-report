@@ -79,10 +79,10 @@ couleurs = ['b', 'r', 'g']  # Couleurs sympas, vous pouvez les ajuster selon vos
 
 plt.figure()
 for i in range(len(xreal)):
-    plt.scatter(xreal[i],yreal[i], s=100, color=couleurs[i])
-    #plt.text(xreal[i], yreal[i], f"Position {i+1}", fontsize=12, ha='left', va='bottom')
-    #plt.quiver(xreal[i], yreal[i], np.cos(rad[i]), np.sin(rad[i]), angles='xy', scale_units='xy', scale=10, color='red', label='Orientation')
-
+    plt.scatter(xreal[i],yreal[i], s=50, color=couleurs[i])
+    plt.text(xreal[i] + 0.1, yreal[i], f"Position {i+1}", fontsize=12, ha='left', va='bottom')
+    plt.quiver(xreal[i], yreal[i], np.cos(rad[i]), np.sin(rad[i]), angles='xy', scale_units='xy', scale=5, color='red', label='Orientation')
+"""
 for i in range(len(xmes1)):
     plt.scatter(xmes1[i],ymes1[i], s=10, color='black')
     #plt.quiver(xmes1[i], ymes1[i], np.cos(radmes1[i]), np.sin(radmes1[i]), angles='xy', scale_units='xy', scale=10, color='black', label='Orientation')
@@ -90,9 +90,11 @@ for i in range(len(xmes1)):
     plt.quiver(xmes2[i], ymes2[i], np.cos(radmes2[i]), np.sin(radmes2[i]), angles='xy', scale_units='xy', scale=10, color='black', label='Orientation')
     plt.scatter(xmes3[i],ymes3[i], s=10, color='black')
     plt.quiver(xmes3[i], ymes3[i], np.cos(radmes3[i]), np.sin(radmes3[i]), angles='xy', scale_units='xy', scale=10, color='black', label='Orientation')
-
-plt.xlim([0.34, 0.365])
-plt.ylim([0.19, 0.21])
+"""
+#plt.xlim([0.34, 0.365])
+#plt.ylim([0.19, 0.21])
+plt.xlim([0.0, 2.0])
+plt.ylim([0.0, 3.0])
 plt.xlabel("$x [m]$")
 plt.ylabel("$y [m]$")
 plt.grid()
@@ -109,20 +111,20 @@ print("position 2 error {}, {}".format(error_2x, error_2y))
 
 error_3x = np.mean(np.array(xmes3) - xreal[2])
 error_3y = np.mean(np.array(ymes3) - yreal[2])
-print("position 3 error {}, {}".format(error_3x, error_3y))
+print("position 3 error {}, {}".format(error_3x, error_3y))q
 """
 
 dist1 = np.sqrt((xreal[0] - np.array(xmes1))**2 + (yreal[0] - np.array(ymes1))**2)
 error1 = np.mean(dist1)*1000
-print(error1)
 
 dist2 = np.sqrt((xreal[1] - np.array(xmes2))**2 + (yreal[1] - np.array(ymes2))**2)
 error2 = np.mean(dist2)*1000
-print(error2)
 
 dist3 = np.sqrt((xreal[2] - np.array(xmes3))**2 + (yreal[2] - np.array(ymes3))**2)
 error3 = np.mean(dist3)*1000
-print(error3)
+
+print("e_1 : {}, e_2 : {}, e_3 : {}".format(error1, error2, error3))
+
 positions = ["Position 1", "Position 2", "Position 3"]
 
 plt.figure()
@@ -134,7 +136,7 @@ error_ang1 = np.mean(np.array(thetames1) - 90)
 error_ang2 = np.mean(np.array(thetames2) - 90)
 error_ang3 = np.mean(np.array(thetames3) - 270)
 
-print(error_ang1, error_ang2, error_ang3)
+print("ang_1 : {}, ang_2 : {}, ang_3 : {}".format(error_ang1, error_ang2, error_ang3))
 
 plt.figure()
 plt.bar(positions, [error_ang1, error_ang2, error_ang3], width=0.5, color=couleurs)

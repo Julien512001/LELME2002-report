@@ -16,15 +16,18 @@ yreal = np.array([0.44, 1.48, 2.0])
 
 dist_real = np.sqrt((xreal-xR)**2 + (yreal-yR)**2)
 error = np.sqrt((xreal-x)**2 + (yreal-y)**2)
+print("error : {}".format(error))
 
 plt.figure()
-plt.bar(dist_real, error, width=0.1, color='red')
+plt.plot(dist_real, error, color='blue')
+plt.scatter(dist_real, error, color='red')
+plt.grid()
 plt.xlabel("distance to opponent $[m]$")
 plt.ylabel("error $[m]$")
 
 plt.figure()
-plt.scatter(x,y, label="Lidar")
-plt.scatter(xreal, yreal, label="réel")
+plt.scatter(x,y, label="position avec le LiDar")
+plt.scatter(xreal, yreal, label="position réelle")
 plt.scatter(xR, yR, label="robot", s=100, c='b')
 
 plt.legend()
